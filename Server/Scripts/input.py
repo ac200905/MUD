@@ -26,10 +26,22 @@ class Input:
         self.list_next_option = [self.next_option_1, self.next_option_2, self.next_option_3]
 
         # A very basic layout of the dungeon
-        self.map = "                         Temple                        \n\n\n" \
-                   "\n  Tavern              North Street              Bank\n\n\n" \
-                   "\nClock Tower           South Street            Large Well\n\n\n" \
-                   "\n                       Entry Gate                    \n"
+        self.map = "\n				Stonefruit Farm                                                        \n" \
+                   "				       |                                                               \n" \
+                   "				       |                                                               \n" \
+                   "Cave ------------- Witch's Hut                                                         \n" \
+                   "  |  			                                                                       \n" \
+                   "  |  			                                                                       \n" \
+                   "Fallen Temple ------------- North Street -----------------------------------Quarry     \n" \
+                   "    			                 |                                                     \n" \
+                   "    			                 |                                                     \n" \
+                   "                Bank ------ Clock Tower ------ Sherrif's Office                        \n" \
+                   "    			                 |                                                     \n" \
+                   "    			                 |                                                     \n" \
+                   "          Helpington's ---- South Street ------ The Davy Lamp                          \n" \
+                   "    			                 |                    |                                \n" \
+                   "    			                 |                    |                                \n" \
+                   "    			             Entry Gate           Large Well                           \n"
 
         self.output = ''
 

@@ -36,7 +36,7 @@ class Game:
 
         self.my_socket.listen(5)
 
-        client = self.my_socket.accept()
+        self.client = self.my_socket.accept()
         # Print the dungeon description at beginning of game
         self.player.input.output = self.dungeon.dungeon_description
 
@@ -46,14 +46,30 @@ class Game:
                 print(self.exit_text)
                 self.running = False
 
+            try:
+                # The data received from client
+                self.data = self.client[0].recv(4096)
+
+                self.player.input.handle_input(user_input=self.data.decode("utf-8"))
+
+                test_string = self.player.input.output
+
+                self.client[0].send(test_string.encode())
+
+            except socket.error:
+                print("Client connection lost.")
+
+                self.my_socket.listen(5)
+                self.client = self.my_socket.accept()
+
             # The data received from client
-            self.data = client[0].recv(4096)
+            #self.data = client[0].recv(4096)
 
-            self.player.input.handle_input(user_input=self.data.decode("utf-8"))
+            #self.player.input.handle_input(user_input=self.data.decode("utf-8"))
 
-            test_string = self.player.input.output
+            #test_string = self.player.input.output
 
-            client[0].send(test_string.encode())
+            #client[0].send(test_string.encode())
 
 
 

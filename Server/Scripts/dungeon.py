@@ -20,13 +20,20 @@ class Dungeon:
     def setup_dungeon(self):
         # Populate the rooms dictionary with
         self.rooms_dict["Entry Gate"] = self.dungeon_rooms.room_1
-        self.rooms_dict["Clock Tower"] = self.dungeon_rooms.room_2
-        self.rooms_dict["Main Street South"] = self.dungeon_rooms.room_3
-        self.rooms_dict["Large Well"] = self.dungeon_rooms.room_4
-        self.rooms_dict["The Smiling Goat"] = self.dungeon_rooms.room_5
-        self.rooms_dict["Main Street North"] = self.dungeon_rooms.room_6
-        self.rooms_dict["Bank"] = self.dungeon_rooms.room_7
-        self.rooms_dict["Fallen Temple"] = self.dungeon_rooms.room_8
+        self.rooms_dict["Large Well"] = self.dungeon_rooms.room_2
+        self.rooms_dict["Helpington's General Store"] = self.dungeon_rooms.room_3
+        self.rooms_dict["South Street"] = self.dungeon_rooms.room_4
+        self.rooms_dict["The Davy Lamp"] = self.dungeon_rooms.room_5
+        self.rooms_dict["Bank"] = self.dungeon_rooms.room_6
+        self.rooms_dict["Clock Tower"] = self.dungeon_rooms.room_7
+        self.rooms_dict["Sherrif's Office"] = self.dungeon_rooms.room_8
+        self.rooms_dict["Fallen Temple"] = self.dungeon_rooms.room_9
+        self.rooms_dict["North Street"] = self.dungeon_rooms.room_10
+        self.rooms_dict["Quarry"] = self.dungeon_rooms.room_11
+        self.rooms_dict["Cave"] = self.dungeon_rooms.room_12
+        self.rooms_dict["Witch's Hut"] = self.dungeon_rooms.room_13
+        self.rooms_dict["Elder's Manor"] = self.dungeon_rooms.room_14
+        self.rooms_dict["Stonefruit Farm"] = self.dungeon_rooms.room_15
         # The room the player will begin in
         self.starting_room = self.rooms_dict["Entry Gate"].name
 
