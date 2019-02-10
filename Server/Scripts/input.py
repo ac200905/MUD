@@ -20,13 +20,10 @@ class Input:
         self.user_input = ''
         self.split_input = ''
         self.instruction = ''
-        self.next_option_1 = "What shall you do now? : "
-        self.next_option_2 = "What will you do next? : "
-        self.next_option_3 = "What action do you take next? : "
-        self.list_next_option = [self.next_option_1, self.next_option_2, self.next_option_3]
 
         # A very basic layout of the dungeon
-        self.map = "\n				Stonefruit Farm                                                        \n" \
+        self.map = "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" \
+                   "				Stonefruit Farm                                                        \n" \
                    "				       |                                                               \n" \
                    "				       |                                                               \n" \
                    "Cave ------------- Witch's Hut                                                         \n" \
@@ -41,7 +38,11 @@ class Input:
                    "          Helpington's ---- South Street ------ The Davy Lamp                          \n" \
                    "    			                 |                    |                                \n" \
                    "    			                 |                    |                                \n" \
-                   "    			             Entry Gate           Large Well                           \n"
+                   "    			             Entry Gate           Large Well                           \n" \
+                   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+
+        self.map_void = "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n\n\n\n\n\n" \
+                        "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 
         self.output = ''
 
@@ -67,7 +68,10 @@ class Input:
             self.look_at()
 
         elif instruction == "map":
-            self.output = self.map
+            if self.player.current_room == "The Void":
+                self.output = self.map_void
+            else:
+                self.output = self.map
 
         elif instruction == "kill":
             self.kill(user_input)

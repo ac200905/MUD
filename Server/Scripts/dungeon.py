@@ -17,6 +17,10 @@ class Dungeon:
 
         self.starting_room = ''
 
+        self.moves_available = 2
+
+        self.moves_taken = 0
+
     def setup_dungeon(self):
         # Populate the rooms dictionary with
         self.rooms_dict["Entry Gate"] = self.dungeon_rooms.room_1
@@ -34,6 +38,8 @@ class Dungeon:
         self.rooms_dict["Witch's Hut"] = self.dungeon_rooms.room_13
         self.rooms_dict["Elder's Manor"] = self.dungeon_rooms.room_14
         self.rooms_dict["Stonefruit Farm"] = self.dungeon_rooms.room_15
+        self.rooms_dict["The Void"] = self.dungeon_rooms.room_16
+
         # The room the player will begin in
         self.starting_room = self.rooms_dict["Entry Gate"].name
 
@@ -44,14 +50,38 @@ class Dungeon:
 
         # If the connection key is not empty
         if new_room != "":
-            #print("\nYou make your way " + direction + "\n"
-                  #+ self.rooms_dict[new_room].description)
+
             self.player.input.output = "\nYou make your way " + direction + "\n" \
                                        + self.rooms_dict[new_room].description
-            # Return the new room name
-            return self.rooms_dict[new_room].name
+
+            # Timer for dungeon reset
+            self.moves_taken = self.moves_taken + 1
+
+            if self.moves_taken >= self.moves_available:
+
+                self.reset_dungeon()
+                # Send player to the void
+                new_room = self.rooms_dict["The Void"].name
+
+                return self.rooms_dict[new_room].name
+
+            else:
+
+                # Return the new room name
+                return self.rooms_dict[new_room].name
 
         else:
             self.player.input.output = "\nNothing of interest that way... " \
                                        "\nTry another direction."
             return current_room
+
+    def reset_dungeon(self):
+        self.moves_taken = -1
+        self.player.input.output = "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" \
+                                   "You hear the clock strike twelve...\n" \
+                                   "As it does the ground cracks beneath you and hot lava spews into the air.\n" \
+                                   "The town, now engulfed in flame, sinks into the ground dragging you down \n" \
+                                   "with it... then you awaken in a strange place...\n" \
+                                   "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+
+

@@ -57,7 +57,8 @@ def send_data(my_socket):
     next_option_1 = "What shall you do now? : "
     next_option_2 = "What will you do next? : "
     next_option_3 = "What action do you take next? : "
-    list_next_option = [next_option_1, next_option_2, next_option_3]
+    next_option_4 = "What's your next move? : "
+    list_next_option = [next_option_1, next_option_2, next_option_3, next_option_4]
 
     input_string = input(random.choice(list_next_option))
 
