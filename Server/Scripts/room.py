@@ -163,7 +163,8 @@ class DungeonRooms:
                            west="")
 
         self.room_16 = Room("The Void", "Tou open your eyes to a room make of light and nothing else...\n",
-                            "\nYou see white light in every direction and a frail figure in the middle of the room.\n",
+                            "\nYou see white light in every direction and a frail figure in the middle of the room.\n"
+                            "'...Find Me...'",
                             north="Entry Gate",
                             south="Entry Gate",
                             east="Entry Gate",

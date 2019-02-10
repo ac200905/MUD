@@ -46,6 +46,8 @@ class Input:
 
         self.output = ''
 
+        self.current_time = ''
+
     def handle_input(self, user_input=""):
         #user_input = input("What will you do next? : ")
         # Convert user input to lower case
@@ -65,7 +67,7 @@ class Input:
             self.move_player(user_input)
 
         elif instruction == "look" or instruction == "look at" or instruction == "survey":
-            self.look_at()
+            self.look_at(user_input)
 
         elif instruction == "map":
             if self.player.current_room == "The Void":
@@ -75,6 +77,9 @@ class Input:
 
         elif instruction == "kill":
             self.kill(user_input)
+
+        elif instruction == "clock":
+            self.output = "\nThe time is: 11:" + self.current_time +"\n"
 
         # If the user input isn't recognisable
         else:
@@ -94,9 +99,17 @@ class Input:
         else:
             self.output = "No such command - Type 'help' for a list of commands."
 
-    def look_at(self):
+    def look_at(self, user_input):
         # Print the description of room connections
         self.output = self.dungeon.rooms_dict[self.player.current_room].look_description
+
+    def check_time(self, user_input):
+        # Print the description of room connections
+        if "clock" in user_input:
+            self.output = "The time is " + self.current_time
+
+        else:
+            self.output = "No such command - Type 'help' for a list of commands."
 
     def kill(self, user_input):
         if "self" in user_input:

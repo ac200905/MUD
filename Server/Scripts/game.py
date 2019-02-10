@@ -22,6 +22,8 @@ class Game:
 
         self.seqID = 0
 
+        self.current_time = 0
+
     def setup(self, dungeon_name):
         self.running = True
 
@@ -40,7 +42,13 @@ class Game:
         # Print the dungeon description at beginning of game
         self.player.input.output = self.dungeon.dungeon_description
 
+        print("Connection to Client established.\n")
+
         while self.running:
+            # Update time on clock
+            self.player.input.current_time = str("{0:0=2d}".format(int(60 / self.dungeon.moves_available * self.dungeon.moves_taken)))
+            if self.dungeon.moves_taken == -1:
+                self.player.input.current_time = "00"
             # If "quit_game" returned then close application
             if self.player.input.output == "quit_game":
                 print(self.exit_text)

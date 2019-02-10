@@ -12,9 +12,16 @@ def main():
     my_socket.connect(("127.0.0.1", 8222))
 
 
-    print("Connection to Server established.")
+    print("Connection to Server established.\n")
 
-
+    print(  "\n                               THE ELEVENTH HOUR\n" \
+            "--------------------------------------------------------------------------------------------\n" \
+            "You step through the bubble surrounding the small town, cut off from the rest of the world. \n" \
+            "As you do, you find yourself standing in a bright white void. \n" \
+            "An old woman stands in front of you holding a small Chalice. \n" \
+            "She whispers, 'It's you. Find me.' \n" \
+            "The woman disappears and you find yourself standing at the entrance into town. \n" \
+            "--------------------------------------------------------------------------------------------\n")
 
     while running:
 

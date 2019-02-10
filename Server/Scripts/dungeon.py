@@ -17,7 +17,7 @@ class Dungeon:
 
         self.starting_room = ''
 
-        self.moves_available = 2
+        self.moves_available = 8
 
         self.moves_taken = 0
 
@@ -81,7 +81,7 @@ class Dungeon:
                                    "You hear the clock strike twelve...\n" \
                                    "As it does the ground cracks beneath you and hot lava spews into the air.\n" \
                                    "The town, now engulfed in flame, sinks into the ground dragging you down \n" \
-                                   "with it... then you awaken in a strange place...\n" \
+                                   "with it... then you awaken in a strange but familiar place...\n" \
                                    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
 
 
