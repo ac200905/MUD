@@ -2,15 +2,16 @@ import socket
 import random
 from time import sleep
 
+running = True
+
 def main():
 
 
-    running = True
     my_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     my_socket.connect(("127.0.0.1", 8222))
 
-    connected = True
+
     print("Connection to Server established.")
 
 
@@ -20,6 +21,7 @@ def main():
         try:
             send_data(my_socket)
             receive_data(my_socket)
+
 
         except socket.error:
             print("Server connection lost. Attempting reconnection...")
@@ -54,6 +56,7 @@ def main():
 
 
 def send_data(my_socket):
+
     next_option_1 = "What shall you do now? : "
     next_option_2 = "What will you do next? : "
     next_option_3 = "What action do you take next? : "
@@ -61,8 +64,14 @@ def send_data(my_socket):
     list_next_option = [next_option_1, next_option_2, next_option_3, next_option_4]
 
     input_string = input(random.choice(list_next_option))
+    input_string = input_string.lower()
 
-    my_socket.send(input_string.encode())
+    if input_string == "quit" or input_string == "q" or input_string == "exit":
+        global running
+        running = False
+        raise SystemExit
+    else:
+        my_socket.send(input_string.encode())
 
 def receive_data(my_socket):
     data = my_socket.recv(4096)

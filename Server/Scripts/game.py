@@ -44,7 +44,7 @@ class Game:
             # If "quit_game" returned then close application
             if self.player.input.output == "quit_game":
                 print(self.exit_text)
-                self.running = False
+                #self.running = False
 
             try:
                 # The data received from client
@@ -52,9 +52,12 @@ class Game:
 
                 self.player.input.handle_input(user_input=self.data.decode("utf-8"))
 
-                test_string = self.player.input.output
+                output_string = self.player.input.output
 
-                self.client[0].send(test_string.encode())
+                self.client[0].send(output_string.encode())
+
+                if self.player.input.output == "quit_game":
+                    print(self.exit_text)
 
             except socket.error:
                 print("Client connection lost.")

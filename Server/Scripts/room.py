@@ -1,7 +1,8 @@
+from Scripts import item
 
 class Room:
 
-    def __init__(self, name, description, look_description, north="", south="", east="", west=""):
+    def __init__(self, name, description, look_description, north="", south="", east="", west="", room_items={}):
         self.name = name
         self.description = description
         self.look_description = look_description
@@ -15,10 +16,15 @@ class Room:
         self.connections["east"] = east
         self.connections["west"] = west
 
+        self.room_items = room_items
+
 
 class DungeonRooms:
 
     def __init__(self):
+
+        self.dungeonItems = item.DungeonItems()
+
         # Create a basic dungeon using the Room Class
         self.room_1 = Room("Entry Gate", "You stand at the entrance to town...\n",
                            "\nYou are at the Entry Gate.\n"
@@ -26,7 +32,8 @@ class DungeonRooms:
                            north="South Street",
                            south="",
                            east="",
-                           west="")
+                           west="",
+                           room_items={"Apple": self.dungeonItems.food_01})
 
         self.room_2 = Room("Large Well", "You gaze into the deepest, darkest well you have ever seen...\n",
                            "\nYou are at the Large Well.\n"
@@ -34,7 +41,8 @@ class DungeonRooms:
                            north="The Davy Lamp",
                            south="",
                            east="",
-                           west="")
+                           west="",
+                           room_items={"Longsword": self.dungeonItems.sword_01})
 
         self.room_3 = Room("Helpington's General Store", "You enter the general store...\n",
                            "\nYou are at Helpington's General Store.\n"
