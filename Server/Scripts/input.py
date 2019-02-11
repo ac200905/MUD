@@ -14,7 +14,8 @@ class Input:
                         "Go <direction> : Can move north, south, east or west\n" \
                         "Look           : Survey the area\n" \
                         "Map            : See a map of the rooms \n" \
-                        "Quit           : Quit game \n" \
+                         "Clock            : Check time \n" \
+                         "Quit           : Quit game \n" \
                         "----------------------------------------------------"
 
         self.user_input = ''
